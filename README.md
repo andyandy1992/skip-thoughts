@@ -5,7 +5,7 @@ Sent2Vec encoder and training code from the paper [Skip-Thought Vectors](http://
 ## TOC
 - [Getting Started](#getting-started)
 - Experiments from Paper:
-  - [TREC Question-Type Classification](#trec_question-type_classification), for classifying questions into some type with [here](http://cogcomp.cs.illinois.edu/Data/QA/QC/definition.html)
+  - [TREC Question-Type Classification](#trec_question-type_classification), for classifying questions into some type defined [here](http://cogcomp.cs.illinois.edu/Data/QA/QC/definition.html).
   - [Image-Sentence Ranking](#image-sentence_ranking)
   - [Semantic-Relatedness](#semantic-relatedness)
   - [Paraphrase Detection](#paraphrase_detection), for determining whether a sentence is a paraphrased by another.
