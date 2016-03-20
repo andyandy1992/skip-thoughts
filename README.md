@@ -2,6 +2,21 @@
 
 Sent2Vec encoder and training code from the paper [Skip-Thought Vectors](http://arxiv.org/abs/1506.06726).
 
+## TOC
+- [Getting Started](#getting-started)
+- Experiments from Paper:
+  - [TREC Question-Type Classification](#trec_question-type_classification), for classifying questions into some type with [here](http://cogcomp.cs.illinois.edu/Data/QA/QC/definition.html)
+  - [Image-Sentence Ranking](#image-sentence_ranking)
+  - [Semantic-Relatedness](#semantic-relatedness)
+  - [Paraphrase Detection](#paraphrase_detection), for determining whether a sentence is a paraphrased by another.
+  - [Binary Classification Benchmarks](#binary_classification_benchmarks)
+  - To download the data for experiments from paper, run ```bash get_data.sh```.
+- Future possibilities from paper:
+ - Explore deep encoders and decoders.
+ - Larger context windows.
+ - Encoding and decoding paragraphs.
+ - Other encoders, such as convnets.
+
 ## Dependencies
 
 This code is written in python. To use it you will need:
@@ -14,9 +29,11 @@ This code is written in python. To use it you will need:
 * [Keras](https://github.com/fchollet/keras) (for Semantic-Relatedness experiments only)
 * [gensim](https://radimrehurek.com/gensim/) (for vocabulary expansion when training new models)
 
-## Getting started
+##<a="getting-started">Getting started</a>
 
 You will first need to download the model files and word embeddings. The embedding files (utable and btable) are quite large (>2GB) so make sure there is enough space available. The encoder vocabulary can be found in dictionary.txt.
+
+(I've added ```get_models.sh```)
 
     wget http://www.cs.toronto.edu/~rkiros/models/dictionary.txt
     wget http://www.cs.toronto.edu/~rkiros/models/utable.npy
@@ -45,7 +62,8 @@ As the vectors are being computed, it will print some numbers. The code works by
 
 The rest of the document will describe how to run the experiments from the paper. For these, create a folder called 'data' to store each of the datasets.
 
-## TREC Question-Type Classification
+<a name="in-progress">In progress</a>:
+##<a name="trec_question-type_classification">TREC Question-Type Classification</a>
 
 Download the dataset from http://cogcomp.cs.illinois.edu/Data/QA/QC/ (train_5500.label and TREC_10.label) and put these into the data directory. To obtain the test set result using the best chosen hyperparameter from CV, run the following:
 
@@ -54,7 +72,7 @@ Download the dataset from http://cogcomp.cs.illinois.edu/Data/QA/QC/ (train_5500
 
 This should give you a result of 92.2%, as in the paper. Alternatively, you can set evalcv=True to do 10-fold cross-validation on the training set. It should find the same hyperparameter and report the same accuracy as above.
 
-## Image-Sentence Ranking
+##<a name="image-sentence_ranking">Image-Sentence Ranking</a>
 
 The file eval_rank.py is used for the COCO image-sentence ranking experiments. To use this, you need to prepare 3 lists: one each for training, development and testing. Each list should consist of 3 entries. The first entry is a list of sentences, the second entry is a numpy array of image features for the corresponding sentences (e.g. OxfordNet/VGG) and the third entry is a numpy array of skip-thought vectors for the corresponding sentences.
 
@@ -71,7 +89,7 @@ This will load a saved model from the 'saveto' path and evaluate on the developm
 
 Pre-computed COCO features will be made available at a later date, once I find a suitable place to host them. Note that this ranking code is generic, it can be applied with other tasks but you may need to modify the evaluation code accordingly.
 
-## Semantic-Relatedness
+##<a name="semantic-relatedness">Semantic-Relatedness</a>
 
 Download the SemEval 2014 Task 1 (SICK) dataset from http://alt.qcri.org/semeval2014/task1/index.php?id=data-and-tools (training data, trial data and test data with annotations) and put these into the data directory. Then run the following:
 
@@ -86,7 +104,7 @@ This will train a model using the trial dataset to early stop on Pearson correla
 
 For this experiment, you will need to have Keras installed in order for it to work.
 
-## Paraphrase Detection
+##<a name="paraphrase_detection">Paraphrase Detection</a>
 
 Download the Microsoft Research Paraphrase Corpus and put it in the data directory. There should be two files, msr_paraphrase_train.txt and msr_paraphrase_test.txt. To obtain the test set result using the best chosen hyperparameter from CV, run the following:
 
@@ -100,7 +118,7 @@ This will evaluate on the test set using the best chosen hyperparamter from CV. 
 
 Alternatively, turning on evalcv will perform 10-fold CV on the training set, and should output the same result after.
 
-## Binary classification benchmarks
+##<a name="binary_classification_benchmarks">Binary classification benchmarks</a>
 
 The file eval_classification.py is used for evaluation on the binary classification tasks (MR, CR, SUBJ and MPQA). You can download CR and MPQA from http://nlp.stanford.edu/~sidaw/home/projects:nbsvm and MR and SUBJ from https://www.cs.cornell.edu/people/pabo/movie-review-data/ (sentence polarity dataset, subjectivity dataset). Included is a function for nested cross-validation, since it is standard practice to report 10-fold CV on these datasets. Here is sample usage:
 

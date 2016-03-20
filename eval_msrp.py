@@ -51,7 +51,7 @@ def evaluate(model, k=10, seed=1234, evalcv=True, evaltest=False, use_feats=True
         print 'Test F1: ' + str(f1(labels[1], yhat))
 
 
-def load_data(loc='./data/'):
+def load_data(loc='/home/andyandy/data/skip-thoughts/Paraphrase_Detection/'):
     """
     Load MSRP dataset
     """

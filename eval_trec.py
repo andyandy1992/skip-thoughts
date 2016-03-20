@@ -7,7 +7,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.cross_validation import KFold
 from sklearn.utils import shuffle
 
-
 def evaluate(model, k=10, seed=1234, evalcv=True, evaltest=False):
     """
     Run experiment
@@ -44,7 +43,7 @@ def evaluate(model, k=10, seed=1234, evalcv=True, evaltest=False):
         print 'Test accuracy: ' + str(clf.score(testF, test_labels))
 
 
-def load_data(loc='./data/'):
+def load_data( loc='/home/andyandy/data/skip-thoughts/Question-Type_Classification'):
     """
     Load the TREC question-type dataset
     """

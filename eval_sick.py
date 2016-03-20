@@ -116,7 +116,7 @@ def encode_labels(labels, nclass=5):
     return Y
 
 
-def load_data(loc='./data/'):
+def load_data(loc='/home/andyandy/data/skip-thoughts/Semantic-Relatedness/'):
     """
     Load the SICK semantic-relatedness dataset
     """
