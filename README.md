@@ -1,6 +1,6 @@
 # skip-thoughts
 
-Sent2Vec encoder and training code from the paper [Skip-Thought Vectors](http://arxiv.org/abs/1506.06726).
+Sent2Vec encoder and training code from the paper [Skip-Thought Vectors](http://arxiv.org/abs/1506.06726). Dicussions from [this video](http://videolectures.net/deeplearning2015_salakhutdinov_deep_learning_2/) at time 01:02:55 also relevant and useful.
 
 ## TOC
 - [Getting Started](#getting-started)
